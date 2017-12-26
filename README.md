@@ -11,13 +11,13 @@ Moving on to the app.js file - where I utilized jQuery:
 The bane of jQuery is the selector function (selector) Basically selectors in jQuery serve to manipulate html elements by using strings, and look like this ```$()```;
 If you have questions about it, feel free to visit ```http://api.jquery.com```. 
 
-Simon starts with,
+Let's starts with our first selector,
 ```
 $(document).ready(function () {
 
 };
 ```
-adding a number of variables that serve to give the input field some nice default placeholder zeroes, much like one would see when operating a calculator in reallife:
+adding a number of variables that serve to give the input field some nice default placeholder zeroes (much like one would see when operating a calculator in reallife):
 ```
 $(document).ready(function () {
     var result = 0;
