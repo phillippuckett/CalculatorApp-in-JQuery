@@ -95,4 +95,4 @@ and last but not least, our elementary arithmetic:
 	    if (operation === '/') return a / b;
     };
 ```
-Once the last few steps are completed one should be able to start a live-server or local-server and being  plugging away numbers all day long - to their hearts content.
+Once the last few steps are completed one should be able to start a live-server or local-server and plug away numbers all day long - to their hearts content.
