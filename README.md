@@ -8,7 +8,7 @@ Let's get started by moving into the 'index.html' file:
 I could have coded everything into my html document, however I'm not a fan of overloading a single page with code, and try to keep things as clean/simple as possible. With that in mind I created a separate JS and CSS file for my project; linking the two files to my index.html page, proceeding to source the jQuery CDN, and then adding DIV's for styling purposes.
 
 Moving on to the app.js file - where I utilized jQuery:
-The bane of jQuery is the selector function (selector) Basically selectors in jQuery serve to manipulate html elements by using strings, and look like this ```$()```;
+The bane of jQuery is the selector function (selector). Basically selectors in jQuery serve to manipulate html elements by using strings, and look like this ```$()```;
 If you have questions about it, feel free to visit ```http://api.jquery.com```. 
 
 Let's starts with our first selector,
@@ -27,5 +27,4 @@ $(document).ready(function () {
 	updateScreen(result);
 };
 ```
-
 
