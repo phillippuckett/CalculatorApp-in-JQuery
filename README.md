@@ -67,7 +67,7 @@ Once we've established our default variables, we can go ahead and begin configur
 
 		updateScreen(currentEntry);
 	});
-    ```
+```
  Now we are ready to add in our number buttons:
 ```
     updateScreen = function (displayValue) {
@@ -80,6 +80,7 @@ Once we've established our default variables, we can go ahead and begin configur
     };
 ```
 and last but not least, our elementary arithmetic:
+```
     isOperator = function (value) {
 	    return value === '/' || value === '*' || value === '+' || value === '-';
     };
@@ -93,5 +94,5 @@ and last but not least, our elementary arithmetic:
 	    if (operation === '*') return a * b;
 	    if (operation === '/') return a / b;
     };
-
+```
 Once the last few steps are completed one should be able to start a live-server or local-server and being  plugging away numbers all day long - to their hearts content.
