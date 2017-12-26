@@ -13,18 +13,85 @@ If you have questions about it, feel free to visit ```http://api.jquery.com```.
 
 Let's starts with our first selector,
 ```
-$(document).ready(function () {
+    $(document).ready(function () {
 
-};
+    };
 ```
 adding a number of variables that serve to give the input field some nice default placeholder zeroes (much like one would see when operating a calculator in reallife):
 ```
-$(document).ready(function () {
-    var result = 0;
-	var prevEntry = 0;
-	var operation = null;
-	var currentEntry = '0';
-	updateScreen(result);
-};
+    $(document).ready(function () {
+        var result = 0;
+	    var prevEntry = 0;
+	    var operation = null;
+	    var currentEntry = '0';
+	    updateScreen(result);
+    };
 ```
+Once we've established our default variables, we can go ahead and begin configuring the following: 
+```C```, ```CE```, ```back```, ```+/-```, ```.```, ```%```, ```sqrt```, ```1/x```, ```pi```, and ```=```;
+```
+	$('.button').on('click', function (evt) {
+		var buttonPressed = $(this).html();
+		console.log(buttonPressed);
 
+		if (buttonPressed === "C") {
+			result = 0;
+			currentEntry = '0';
+		} else if (buttonPressed === "CE") {
+			currentEntry = '0';
+		} else if (buttonPressed === "back") {
+			//currentEntry = currentEntry.substring(0, currentEntry.length-1);
+		} else if (buttonPressed === "+/-") {
+			currentEntry *= -1;
+		} else if (buttonPressed === '.') {
+			currentEntry += '.';
+		} else if (isNumber(buttonPressed)) {
+			if (currentEntry === '0') currentEntry = buttonPressed;
+			else currentEntry = currentEntry + buttonPressed;
+		} else if (isOperator(buttonPressed)) {
+			prevEntry = parseFloat(currentEntry);
+			operation = buttonPressed;
+			currentEntry = '';
+		} else if (buttonPressed === '%') {
+			currentEntry = currentEntry / 100;
+		} else if (buttonPressed === 'sqrt') {
+			currentEntry = Math.sqrt(currentEntry);
+		} else if (buttonPressed === '1/x') {
+			currentEntry = 1 / currentEntry;
+		} else if (buttonPressed === 'pi') {
+			currentEntry = Math.PI;
+		} else if (buttonPressed === '=') {
+			currentEntry = operate(prevEntry, currentEntry, operation);
+			operation = null;
+		}
+
+		updateScreen(currentEntry);
+	});
+    ```
+ Now we are ready to add in our number buttons:
+```
+    updateScreen = function (displayValue) {
+        var displayValue = displayValue.toString();
+        $('.screen').html(displayValue.substring(0, 10));
+    };
+
+    isNumber = function (value) {
+	    return !isNaN(value);
+    };
+```
+and last but not least, our elementary arithmetic:
+    isOperator = function (value) {
+	    return value === '/' || value === '*' || value === '+' || value === '-';
+    };
+
+    operate = function (a, b, operation) {
+	    a = parseFloat(a);
+	    b = parseFloat(b);
+	    console.log(a, b, operation);
+	    if (operation === '+') return a + b;
+	    if (operation === '-') return a - b;
+	    if (operation === '*') return a * b;
+	    if (operation === '/') return a / b;
+    };
+
+Once the last few steps are completed one should be able to start a live-server or local-server and being  plugging away numbers all day long - to their hearts content.

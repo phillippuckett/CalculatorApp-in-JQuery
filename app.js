@@ -15,7 +15,7 @@ $(document).ready(function () {
 		} else if (buttonPressed === "CE") {
 			currentEntry = '0';
 		} else if (buttonPressed === "back") {
-			//currentEntry = currentEntry.substring(0, currentEntry.length-1);
+			currentEntry = currentEntry.substring(0, currentEntry.length-1);
 		} else if (buttonPressed === "+/-") {
 			currentEntry *= -1;
 		} else if (buttonPressed === '.') {
@@ -65,4 +65,4 @@ operate = function (a, b, operation) {
 	if (operation === '-') return a - b;
 	if (operation === '*') return a * b;
 	if (operation === '/') return a / b;
-}
+};
